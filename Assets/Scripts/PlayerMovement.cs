@@ -40,10 +40,10 @@ public class PlayerMovement : MonoBehaviour
             Destroy(other.gameObject);
         }
     }
-    void OnCollisiionEnter(Collision collision)
+    void OnCollisionEnter(Collision collision)
     {
 
-        if (collision.gameObject.tag == "Ground")
+        if (collision.gameObject.tag == "Ground")       
         {
             isGrounded = true;
         }
