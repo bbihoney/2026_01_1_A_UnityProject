@@ -387,6 +387,77 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &852261661
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1663104244}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: e20b3f5180ca41242af357187c1f148f, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: e20b3f5180ca41242af357187c1f148f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: e20b3f5180ca41242af357187c1f148f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: e20b3f5180ca41242af357187c1f148f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: e20b3f5180ca41242af357187c1f148f, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: e20b3f5180ca41242af357187c1f148f, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: e20b3f5180ca41242af357187c1f148f, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.97236997
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: e20b3f5180ca41242af357187c1f148f, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.23344536
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: e20b3f5180ca41242af357187c1f148f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 27
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: e20b3f5180ca41242af357187c1f148f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: e20b3f5180ca41242af357187c1f148f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e20b3f5180ca41242af357187c1f148f, type: 3}
+      propertyPath: m_Name
+      value: glider
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e20b3f5180ca41242af357187c1f148f, type: 3}
+--- !u!4 &852261662 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: e20b3f5180ca41242af357187c1f148f, type: 3}
+  m_PrefabInstance: {fileID: 852261661}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &852261663 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: e20b3f5180ca41242af357187c1f148f, type: 3}
+  m_PrefabInstance: {fileID: 852261661}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &961739749
 GameObject:
   m_ObjectHideFlags: 0
@@ -628,7 +699,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uC0DD\uC874 \uC2DC\uAC04 : 0.00f"
+  m_text: "\uC0DD\uC874 \uC2DC\uAC04 : 0.00"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 558948a7a3dfef5488d93d3307ea031f, type: 2}
   m_sharedMaterial: {fileID: 4580531102152822876, guid: 558948a7a3dfef5488d93d3307ea031f, type: 2}
@@ -789,8 +860,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f5814d48a634b24e85846178748cd14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
-  moveSpeed: 5
-  jumpForce: 5
+  moveSpeed: 3.5
+  jumpForce: 7
+  turnSpeed: 10
+  fallMultiplier: 2.5
+  lowJumpMultiplier: 2
+  coyoteTime: 0.15
+  coyoteTimeCounter: 0
+  realGrouned: 1
+  gliderObject: {fileID: 852261663}
+  gliderFallSpeed: 1
+  gliderFMoveSpeed: 7
+  gliderMaxTime: 5
+  gliderTimerLeft: 0
+  isGliding: 0
   rb: {fileID: 1663104240}
   isGrounded: 1
   coinCount: 0
@@ -828,7 +911,7 @@ CapsuleCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1663104238}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 6bda0f893f089834983b614e152a220a, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -915,6 +998,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2060216800}
+  - {fileID: 852261662}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1663104245
@@ -968,7 +1052,7 @@ MonoBehaviour:
   - {fileID: 178779639}
   - {fileID: 1804240459}
   timer: 0
-  interval: 3
+  interval: 2.5
 --- !u!4 &1738481278
 Transform:
   m_ObjectHideFlags: 0
